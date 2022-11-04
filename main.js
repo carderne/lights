@@ -7,13 +7,12 @@ mapboxgl.accessToken =
 const map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/mapbox/dark-v10",
-  center: [-1, 51.5],
-  zoom: 8,
-  minZoom: 5,
+  center: [-1.15, 53.3],
+  zoom: 6.5,
+  minZoom: 3,
   maxZoom: 16,
-  maxBounds: [-9, 48, 3, 61],
+  maxBounds: [-15, 42, 9, 67],
   projection: "globe",
-  //hash: "loc",
 });
 
 map.on("style.load", () => {
@@ -45,7 +44,15 @@ map.on("load", () => {
 
   const getSize = (i1, i2, i3) => {
     const greenNow = [i1, i2, i3].indexOf(0) + 1;
-    return ["case", ["==", ["get", "gr"], greenNow], 3, 2];
+    return [
+      "interpolate",
+      ["linear"],
+      ["zoom"],
+      5,
+      ["case", ["==", ["get", "gr"], greenNow], 1, 0.7],
+      16,
+      ["case", ["==", ["get", "gr"], greenNow], 9, 6],
+    ];
   };
 
   map.addLayer({
@@ -56,7 +63,7 @@ map.on("load", () => {
     paint: {
       "circle-radius": getSize(i1, i2, i3),
       "circle-color": getColor(i1, i2, i3),
-      "circle-opacity": 0.3,
+      "circle-opacity": ["interpolate", ["linear"], ["zoom"], 5, 0.1, 16, 1],
     },
   });
 
@@ -69,4 +76,19 @@ map.on("load", () => {
   };
 
   setInterval(changeColors, 3000);
+
+  const target = {
+    center: [-0.158, 51.513],
+    zoom: 16,
+    bearing: 80,
+    pitch: 65,
+  };
+
+  setTimeout(() => {
+    map.flyTo({
+      ...target,
+      duration: 12000,
+      essential: true,
+    });
+  }, 3000);
 });

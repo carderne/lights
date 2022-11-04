@@ -6,28 +6,43 @@
 
         <meta name="twitter:site" content="@chrisarderne">
         <meta name="twitter:creator" content="@chrisarderne">
-        <meta name="twitter:title" content="Cardinality">
-        <meta name="twitter:description" content="Ever wondered what the south-by-east-est part of your country is">
-        <meta name="description" content="Ever wondered what the south-by-east-est part of your country is">
-        <meta property="og:description" content="Ever wondered what the south-by-east-est part of your country is">
-        <meta name="twitter:card"  content="summary_large_image">
-        <meta name="twitter:image:src" content="https://rdrn.me/cardinality/image.png" />
-        <meta name="twitter:image" content="https://rdrn.me/cardinality/image.png" />
-        <meta property="og:image" content="https://rdrn.me/cardinality/image.png" />
+        <meta name="twitter:title" content="Green Lights">
+        <meta name="twitter:description" content="A simple map/animation of OpenStreetMap Traffic Lights in the UK and Ireland">
+        <meta name="description" content="A simple map/animation of OpenStreetMap Traffic Lights in the UK and Ireland">
+        <meta property="og:description" content="A simple map/animation of OpenStreetMap Traffic Lights in the UK and Ireland">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image:src" content="https://rdrn.me/lights/image.png" />
+        <meta name="twitter:image" content="https://rdrn.me/lights/image.png" />
+        <meta property="og:image" content="https://rdrn.me/lights/image.png" />
         <meta property="og:type" content="article">
         <meta property="og:locale" content="en_US">
         <meta property="og:site_name" content="Chris Arderne">
-        <meta property="og:title" content="Cardinality">
-        <meta property="og:url" content="https://rdrn.me/cardinality/">
-        <link rel="canonical" href="https://rdrn.me/cardinality/">
+        <meta property="og:title" content="Green Lights">
+        <meta property="og:url" content="https://rdrn.me/lights/">
+        <link rel="canonical" href="https://rdrn.me/lights/">
 
         <title>Green Lights</title>
         <script src="vendor/mapbox-gl.js"></script>
         <link href="vendor/mapbox-gl.css" rel="stylesheet" />
         <link href="./tw.css" rel="stylesheet" />
     </head>
+    <style>
+#fly {
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    text-align: center;
+    color: #fff;
+    background: #7cbd4e;
+}
+    </style>
     <body>
         <div class="h-screen w-screen" id="map"></div>
+        <button id="fly">Fly</button>
         <script type="module" src="./main.js"></script>
     </body>
 </html>

@@ -7,13 +7,14 @@ mapboxgl.accessToken =
 const map = new mapboxgl.Map({
   container: "map",
   style: "mapbox://styles/mapbox/dark-v10",
-  center: [-1.15, 53.3],
-  zoom: 6.5,
+  center: [-1.15, 51.3],
+  zoom: 7.5,
   minZoom: 3,
   maxZoom: 16,
   maxBounds: [-15, 42, 9, 67],
   projection: "globe",
 });
+map.addControl(new mapboxgl.NavigationControl());
 
 map.on("style.load", () => {
   map.setFog({});
@@ -77,18 +78,19 @@ map.on("load", () => {
 
   setInterval(changeColors, 3000);
 
-  const target = {
-    center: [-0.158, 51.513],
-    zoom: 16,
-    bearing: 80,
-    pitch: 65,
-  };
-
-  setTimeout(() => {
+  const fly = () => {
+    const target = {
+      center: [-0.158, 51.513],
+      zoom: 16,
+      bearing: 80,
+      pitch: 65,
+    };
     map.flyTo({
       ...target,
-      duration: 12000,
+      duration: 32000,
       essential: true,
     });
-  }, 3000);
+  };
+
+  document.getElementById("fly").addEventListener("click", fly);
 });

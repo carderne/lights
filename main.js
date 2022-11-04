@@ -76,7 +76,7 @@ map.on("load", () => {
     map.setPaintProperty("lights", "circle-radius", getSize(i1, i2, i3));
   };
 
-  setInterval(changeColors, 3000);
+  setInterval(changeColors, 2000);
 
   const fly = () => {
     const target = {
@@ -87,8 +87,12 @@ map.on("load", () => {
     };
     map.flyTo({
       ...target,
-      duration: 32000,
+      curve: 1.6,
+      duration: 14000,
       essential: true,
+      easing(t) {
+        return t * t;
+      },
     });
   };
 
